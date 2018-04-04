@@ -23,6 +23,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="fruit.py" />
+    <Compile Include="mat2csv.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="csv\fruit0326_button_1_0_.csv" />
@@ -52,9 +53,12 @@
     <Content Include="csv\fruit0326_x_test_1_0_.csv" />
     <Content Include="csv\fruit0326_y_1_0_.csv" />
     <Content Include="csv\fruit0326_y_BL_test_1_0_.csv" />
+    <Content Include="data\fruit0326.mat" />
+    <Content Include="data\K_data.m" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="csv\" />
+    <Folder Include="data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
