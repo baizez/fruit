@@ -26,7 +26,7 @@ def mat2csv():
         mat_data = sio.loadmat(file_path)
         version = str(mat_data.get("__version__", "1.0")).replace(".", "_")
 
-        for key in mat_data.iterkeys():
+        for key in mat_data:
             if not str(key).startswith("__"):
                 data = mat_data[key][:]
                 print(mat_file)
