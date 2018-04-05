@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a0025252-0296-4fde-8fa6-db1f668dedf7</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>fruit.py</StartupFile>
+    <StartupFile>lda.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,41 +23,54 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="fruit.py" />
+    <Compile Include="lda.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="mat2csv.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="csv\fruit0326_button_1_0_.csv" />
-    <Content Include="csv\fruit0326_b_1_0_.csv" />
-    <Content Include="csv\fruit0326_CSH_test_baseline_1_0_.csv" />
-    <Content Include="csv\fruit0326_CSH_test_RR_1_0_.csv" />
-    <Content Include="csv\fruit0326_CSH_train_baseline_1_0_.csv" />
-    <Content Include="csv\fruit0326_CSH_train_RR_1_0_.csv" />
-    <Content Include="csv\fruit0326_FSH_test_1_0_.csv" />
-    <Content Include="csv\fruit0326_FSH_test_baseline_1_0_.csv" />
-    <Content Include="csv\fruit0326_FSH_test_RR_1_0_.csv" />
-    <Content Include="csv\fruit0326_FSH_train_1_0_.csv" />
-    <Content Include="csv\fruit0326_FSH_train_baseline_1_0_.csv" />
-    <Content Include="csv\fruit0326_FSH_train_RR_1_0_.csv" />
-    <Content Include="csv\fruit0326_i_1_0_.csv" />
-    <Content Include="csv\fruit0326_MeanD_1_0_.csv" />
-    <Content Include="csv\fruit0326_Target_home_1_0_.csv" />
-    <Content Include="csv\fruit0326_Temp_home_1_0_.csv" />
-    <Content Include="csv\fruit0326_TH_test2_1_0_.csv" />
-    <Content Include="csv\fruit0326_TH_test_1_0_.csv" />
-    <Content Include="csv\fruit0326_TH_train_1_0_.csv" />
-    <Content Include="csv\fruit0326_tranMatrix_1_0_.csv" />
-    <Content Include="csv\fruit0326_x0_1_0_.csv" />
-    <Content Include="csv\fruit0326_x_1_0_.csv" />
-    <Content Include="csv\fruit0326_x_BL_test_1_0_.csv" />
-    <Content Include="csv\fruit0326_x_test2_1_0_.csv" />
-    <Content Include="csv\fruit0326_x_test_1_0_.csv" />
-    <Content Include="csv\fruit0326_y_1_0_.csv" />
-    <Content Include="csv\fruit0326_y_BL_test_1_0_.csv" />
+    <Content Include="csv\fruit0329\c.csv" />
+    <Content Include="csv\fruit0329\CC.csv" />
+    <Content Include="csv\fruit0329\change.csv" />
+    <Content Include="csv\fruit0329\CSH_baseline.csv" />
+    <Content Include="csv\fruit0329\CSH_RR.csv" />
+    <Content Include="csv\fruit0329\CSH_test_baseline.csv" />
+    <Content Include="csv\fruit0329\CSH_test_RR.csv" />
+    <Content Include="csv\fruit0329\CSH_train_baseline.csv" />
+    <Content Include="csv\fruit0329\CSH_train_RR.csv" />
+    <Content Include="csv\fruit0329\D.csv" />
+    <Content Include="csv\fruit0329\FH.csv" />
+    <Content Include="csv\fruit0329\FSH.csv" />
+    <Content Include="csv\fruit0329\FSH_baseline.csv" />
+    <Content Include="csv\fruit0329\FSH_RR.csv" />
+    <Content Include="csv\fruit0329\FSH_test.csv" />
+    <Content Include="csv\fruit0329\FSH_test_baseline.csv" />
+    <Content Include="csv\fruit0329\FSH_test_RR.csv" />
+    <Content Include="csv\fruit0329\FSH_train.csv" />
+    <Content Include="csv\fruit0329\FSH_train_baseline.csv" />
+    <Content Include="csv\fruit0329\FSH_train_RR.csv" />
+    <Content Include="csv\fruit0329\i.csv" />
+    <Content Include="csv\fruit0329\Target_H.csv" />
+    <Content Include="csv\fruit0329\Temp_H.csv" />
+    <Content Include="csv\fruit0329\Temp_test.csv" />
+    <Content Include="csv\fruit0329\Temp_train.csv" />
+    <Content Include="csv\fruit0329\TH_test.csv" />
+    <Content Include="csv\fruit0329\TH_test2.csv" />
+    <Content Include="csv\fruit0329\TH_train.csv" />
+    <Content Include="csv\fruit0329\TH_train2.csv" />
+    <Content Include="csv\fruit0329\tranMatrix.csv" />
+    <Content Include="csv\fruit0329\x.csv" />
+    <Content Include="csv\fruit0329\x_test.csv" />
+    <Content Include="csv\fruit0329\x_test_baseline.csv" />
+    <Content Include="csv\fruit0329\x_test_RR.csv" />
+    <Content Include="csv\fruit0329\x_train_baseline.csv" />
+    <Content Include="csv\fruit0329\x_train_RR.csv" />
     <Content Include="data\fruit0326.mat" />
-    <Content Include="data\K_data.m" />
+    <Content Include="data\fruit0329.mat" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="csv\" />
+    <Folder Include="csv\fruit0329\" />
     <Folder Include="data\" />
   </ItemGroup>
   <PropertyGroup>

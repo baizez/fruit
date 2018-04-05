@@ -24,19 +24,21 @@ def mat2csv():
 
     for mat_file in mat_list:
         file_path = os.path.join(mat_data_path, mat_file)
+        csv_data_fold = os.path.join(csv_data_path,mat_file.split('.')[0])
+        if not os.path.exists(csv_data_fold):
+            os.makedirs(csv_data_fold)
         mat_data = sio.loadmat(file_path)
 
         for key in mat_data:
             if not str(key).startswith("__"):
                 data = mat_data[key][:]
-                print(mat_file)
+                print(key)
                 try:
                     dfdata = pd.DataFrame(data)
                 except ValueError as e:
                     print(e.message)
                     continue
-                csv_name = "_".join([mat_file.split(".")[0], key,'.csv'])
-                csv_path = os.path.join(csv_data_path, csv_name)
+                csv_path = os.path.join(csv_data_fold, key+'.csv')
                 dfdata.to_csv(csv_path)
 
 
