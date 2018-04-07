@@ -18,7 +18,7 @@ def lda(dataName,label):
     plt.title(dataName)
     plt.savefig('result/'+dataName+'.png')
     plt.show()
-    return Xtrain
+    return X_train
     
 if __name__ == '__main__':
     datalist=['CSH_train_baseline','CSH_all_baseline','CSH_train_RR']
@@ -27,5 +27,5 @@ if __name__ == '__main__':
     ldaMat='data/fruit0329_Lda'
     for dataname in datalist:
         trained=lda(dataname,datalabel[dataname])
-        ldadict[dataname]=trained
+        ldadict[dataname+'_lda']=trained
     sio.savemat(ldaMat,ldadict)
