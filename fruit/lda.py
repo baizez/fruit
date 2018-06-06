@@ -21,8 +21,8 @@ def lda(dataName,label):
     return X_train
     
 if __name__ == '__main__':
-    datalist=['CSH_train_baseline','CSH_all_baseline','CSH_train_RR']
-    datalabel={'CSH_train_baseline':'TH_train2','CSH_all_baseline':'TH_all2','CSH_train_RR':'TH_train2'}
+    datalist=['CSH_train_baseline','CSH_all_baseline','CSH_all_RR']
+    datalabel={'CSH_train_baseline':'TH_train2','CSH_all_baseline':'TH_all','CSH_all_RR':'TH_all'}
     ldadict=dict()
     ldaMat='data/fruit0329_Lda'
     for dataname in datalist:
