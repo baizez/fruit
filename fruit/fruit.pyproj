@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a0025252-0296-4fde-8fa6-db1f668dedf7</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>RMM_lstm.py</StartupFile>
+    <StartupFile>RNN_lstm.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,7 +22,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="RMM_lstm.py">
+    <Compile Include="fruit.py" />
+    <Compile Include="RNN_lstm.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="svm.py" />

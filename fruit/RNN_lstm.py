@@ -1,19 +1,15 @@
 ﻿import tensorflow as tf
+from fruit import Fruit
 
-import scipy.io as sio  
-lr=0.001
-training_iters=128*10*20
+lr=0.001        #学习率
+training_iters=128*10*20    #迭代次数
 
-batch_size=105
+batch_size=25
 
-n_inputs=1     #28行
-n_steps=41     #28列
+n_inputs=8     #8个传感器
+n_steps=120     #120个点
 n_hidden_units=128
-n_classes=4  #10类
-
-data = sio.loadmat('data/fruit0329.mat')
-x_in=data['CSH_all_baseline']
-y_in=data['TH_all2']
+n_classes=4  #4类
 
 with tf.name_scope('inputs'):
     x=tf.placeholder(tf.float32,[None,n_steps,n_inputs],name='x_in')
@@ -33,7 +29,7 @@ biases={
 
 def RNN(X,weights,biases):
 
-    #（128 batch,28 step, 28 inputs) => (128*28，28 inputs)
+    #（5 batch,120step, 8 inputs) => (5*120，8 inputs)
     X=tf.reshape(X,[-1,n_inputs])
     X_in = tf.matmul(X,weights['in'])+biases['in']
     #X_in ==>(128batch,28step,128hidden)
@@ -64,12 +60,12 @@ accuracy=tf.reduce_mean(tf.cast(correct_pred,tf.float32))
 init=tf.global_variables_initializer()
 with tf.Session() as sess:
     writer = tf.summary.FileWriter("logs/", sess.graph)
-    batch_xs=x_in
-    batch_ys=y_in
-    batch_xs=batch_xs.reshape([batch_size,n_steps,n_inputs])
     sess.run(init)
     step=0
+    data=Fruit(task='train')
+
     while step*batch_size<training_iters:
+        batch_xs,batch_ys=data.next_batch(batch_size)
         sess.run([train_op],feed_dict={
             x:batch_xs,
             y:batch_ys,
@@ -80,3 +76,13 @@ with tf.Session() as sess:
             y:batch_ys,
             }))
         step=step+1
+
+    print('train over\n\n')
+
+    dataTest=Fruit(task='test')
+    x_test=dataTest.images[:]
+    y_test=dataTest.labels[:]
+    print(sess.run(accuracy,feed_dict={
+            x:x_test,
+            y:y_test,
+            }))
