@@ -2,12 +2,12 @@
 from fruit import Fruit
 
 lr=0.001        #学习率
-training_iters=128*10*20    #迭代次数
+training_iters=5000    #迭代次数
 
-batch_size=25
+batch_size=24
 
 n_inputs=8     #8个传感器
-n_steps=120     #120个点
+n_steps=60     #120个点
 n_hidden_units=128
 n_classes=4  #4类
 
@@ -59,10 +59,10 @@ accuracy=tf.reduce_mean(tf.cast(correct_pred,tf.float32))
 
 init=tf.global_variables_initializer()
 with tf.Session() as sess:
-    writer = tf.summary.FileWriter("logs/", sess.graph)
+    #writer = tf.summary.FileWriter("logs/", sess.graph)
     sess.run(init)
     step=0
-    data=Fruit(task='train')
+    data=Fruit(dataname='C1',task='train')
 
     while step*batch_size<training_iters:
         batch_xs,batch_ys=data.next_batch(batch_size)
@@ -79,10 +79,22 @@ with tf.Session() as sess:
 
     print('train over\n\n')
 
-    dataTest=Fruit(task='test')
+    dataTest=Fruit(dataname='C1',task='test')
     x_test=dataTest.images[:]
     y_test=dataTest.labels[:]
     print(sess.run(accuracy,feed_dict={
+        x:x_test,
+        y:y_test,
+        }))
+    print(sess.run(pred,feed_dict={
             x:x_test,
             y:y_test,
             }))
+    print(sess.run(accuracy,feed_dict={
+        x:x_test,
+        y:y_test,
+        }))
+    print(sess.run(accuracy,feed_dict={
+        x:x_test,
+        y:y_test,
+        }))

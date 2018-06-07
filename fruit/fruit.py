@@ -3,21 +3,21 @@ import numpy
 
 class Fruit:
 
-    def __init__(self,filename='data/fruit0606.mat', task='train'):
+    def __init__(self,filename='data/fruit0606.mat', dataname='D1',task='train'):
 
         data = sio.loadmat(filename)
         self._epochs_completed = 0
         self._index_in_epoch = 0
            
         if task=="train":
-            self.images = data['FSH'][:80]
+            self.images = data[dataname][:80]
             self.labels = data['TH_all'][:80]
             self._num_examples=80 #是指所有训练数据的样本个数
 
         if task=="test":
-            self.images = data['FSH'][80:]
+            self.images = data[dataname][80:]
             self.labels = data['TH_all'][80:]
-            self._num_examples=25 #是指所有训练数据的样本个数
+            self._num_examples=24 #是指所有训练数据的样本个数
 
 
     def next_batch(self, batch_size, fake_data=False, shuffle=True):
