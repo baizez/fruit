@@ -1,8 +1,9 @@
 ﻿import tensorflow as tf
+import matplotlib.pyplot as plt
 from fruit import Fruit
 
-lr=0.001        #学习率
-training_iters=5000    #迭代次数
+lr=0.01         #学习率
+training_iters=24*300    #迭代次数
 
 batch_size=24
 
@@ -17,14 +18,14 @@ with tf.name_scope('inputs'):
 
 weights={
          #28,128
-         'in':tf.Variable(tf.random_normal([n_inputs,n_hidden_units])),
-         'out':tf.Variable(tf.random_normal([n_hidden_units,n_classes]))
+         'in':tf.Variable(tf.random_normal([n_inputs,n_hidden_units]),name='in_weight'),
+         'out':tf.Variable(tf.random_normal([n_hidden_units,n_classes]),name='out_weight')
          }
 
 biases={
          #128,10
-         'in':tf.Variable(tf.constant(0.1,shape=[n_hidden_units,])),
-         'out':tf.Variable(tf.constant(0.1,shape=[n_classes,]))
+         'in':tf.Variable(tf.constant(0.1,shape=[n_hidden_units,]),name='in_biases'),
+         'out':tf.Variable(tf.constant(0.1,shape=[n_classes,]),name='out_biases')
          }
 
 def RNN(X,weights,biases):
@@ -55,23 +56,26 @@ with tf.name_scope('train'):
     train_op=tf.train.AdamOptimizer(lr).minimize(cost)
 
 correct_pred=tf.equal(tf.arg_max(pred,1),tf.arg_max(y,1))
-accuracy=tf.reduce_mean(tf.cast(correct_pred,tf.float32))
+
+with tf.name_scope('accuracy'):
+    accuracy=tf.reduce_mean(tf.cast(correct_pred,tf.float32))
+    tf.summary.scalar('accuracy', accuracy) 
 
 init=tf.global_variables_initializer()
 with tf.Session() as sess:
-    #writer = tf.summary.FileWriter("logs/", sess.graph)
+    merged = tf.summary.merge_all()
+    writer = tf.summary.FileWriter("logs/", sess.graph)
     sess.run(init)
     step=0
     data=Fruit(dataname='C1',task='train')
-
     while step*batch_size<training_iters:
         batch_xs,batch_ys=data.next_batch(batch_size)
         sess.run([train_op],feed_dict={
             x:batch_xs,
             y:batch_ys,
             })
-        if step % 20==0:
-            print(sess.run(accuracy,feed_dict={
+        if step % 1==0:
+            print(sess.run(cost,feed_dict={
             x:batch_xs,
             y:batch_ys,
             }))
@@ -82,18 +86,6 @@ with tf.Session() as sess:
     dataTest=Fruit(dataname='C1',task='test')
     x_test=dataTest.images[:]
     y_test=dataTest.labels[:]
-    print(sess.run(accuracy,feed_dict={
-        x:x_test,
-        y:y_test,
-        }))
-    print(sess.run(pred,feed_dict={
-            x:x_test,
-            y:y_test,
-            }))
-    print(sess.run(accuracy,feed_dict={
-        x:x_test,
-        y:y_test,
-        }))
     print(sess.run(accuracy,feed_dict={
         x:x_test,
         y:y_test,
